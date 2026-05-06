@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.heading {
+  perspective: 1000px;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+  transform-origin: bottom;
+}
