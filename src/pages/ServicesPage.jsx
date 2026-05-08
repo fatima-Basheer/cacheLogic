@@ -1,6 +1,6 @@
 import { IoLogoAndroid } from "react-icons/io";
 
-function Services() {
+function ServicesPage() {
   const servicesData = [
     {
       title: "AI/ML",
@@ -48,28 +48,35 @@ function Services() {
               group relative overflow-hidden cursor-pointer rounded-2xl
               transition-all duration-500 ease-in-out p-6
               h-[300px] hover:h-[400px]
-              bg-white/10 backdrop-blur-lg border border-2 border-white
-              hover:border-blue-600 hover:shadow-xl
+
+              bg-white/10 backdrop-blur-lg
+
+              border-2 border-white/20
+              hover:border-blue-500
+
+              hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]
+
               ${index % 3 === 1 ? "lg:translate-y-[20px]" : ""}
               ${index % 3 === 2 ? "lg:translate-y-[40px]" : ""}
             `}
           >
             <div
               className="
-              absolute top-0 right-0 w-40 h-40
-              bg-gradient-to-bl from-blue-500/40 via-blue-400/10 to-transparent
-              blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500
-            "
+                absolute top-0 right-0 w-40 h-40
+                bg-gradient-to-bl from-blue-500/40 via-blue-400/10 to-transparent
+                blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500
+              "
             />
 
             <div className="relative z-10">
               <div
                 className="
-                inline-flex items-center justify-center p-2 rounded-2xl w-fit border-2 border-white
-                bg-white/10 backdrop-blur-md border border-white/30
-                group-hover:scale-110 group-hover:shadow-lg group-hover:bg-blue-500
-                transition-all duration-300
-              "
+                  inline-flex items-center justify-center p-2 rounded-2xl w-fit
+                  bg-white/10 backdrop-blur-md border border-white/30
+
+                  group-hover:scale-110 group-hover:shadow-lg group-hover:bg-blue-500
+                  transition-all duration-300
+                "
               >
                 <IoLogoAndroid className="text-4xl text-blue-500 group-hover:text-white" />
               </div>
@@ -86,12 +93,12 @@ function Services() {
             <div className="absolute bottom-4 left-0 w-full px-6">
               <div
                 className="
-                opacity-0 translate-y-6
-                group-hover:opacity-100 group-hover:translate-y-0
-                transition-all duration-500
-              "
+                  opacity-0 translate-y-6
+                  group-hover:opacity-100 group-hover:translate-y-0
+                  transition-all duration-500
+                "
               >
-                <button className="text-blue-500 bg-transparent border-2 border-white px-2 py-1 rounded-full font-medium">
+                <button className="text-blue-500 bg-transparent border-2 border-white px-2 py-1 rounded-full font-medium cursor-pointer duration-500">
                   Get Started
                 </button>
               </div>
@@ -109,4 +116,4 @@ function Services() {
   );
 }
 
-export default Services;
+export default ServicesPage;

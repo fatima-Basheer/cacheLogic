@@ -1,6 +1,6 @@
 import React from "react";
 
-function Result() {
+function ResultPage() {
   const slides = [
     {
       type: "image",
@@ -75,4 +75,4 @@ function Result() {
   );
 }
 
-export default Result;
+export default ResultPage;

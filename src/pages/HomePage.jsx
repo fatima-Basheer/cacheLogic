@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
-import Stair from "./Stair";
-import Images from "./Images";
-
+import Button from "../components/Button";
+import Stair from "../components/Stair";
+import Images from "../components/Images";
+import Header from "../components/Header";
 const StaggerHeading = ({ text }) => {
   return (
     <h1 className="heading font-medium text-[80px] leading-20 tracking-normal">
@@ -24,15 +24,6 @@ const StaggerHeading = ({ text }) => {
 function HomePage() {
   const container = useRef();
 
-  const navMenu = [
-    "Services",
-    "Products",
-    "About us",
-    "Blog",
-    "Careers",
-    "Portfolio",
-  ];
-
   useGSAP(
     () => {
       gsap.from(".char", {
@@ -48,42 +39,27 @@ function HomePage() {
   );
 
   return (
-    <div ref={container} className="relative bg-sky-100 overflow-hidden">
+    <div
+      ref={container}
+      className="relative bg-sky-100 py-4 px-3 overflow-hidden"
+    >
       <div className="absolute bottom-[-40px] left-[-40px] w-[80%] h-[80px] bg-indigo-600 opacity-90 blur-3xl rounded-full"></div>
 
-      <header className="flex justify-between items-center px-15 py-3">
-        <div>
-          <p className="text-2xl leading-5 font-medium font-mono cursor-pointer">
-            Cache <br /> Logic
-          </p>
-        </div>
+      <Header />
 
-        <nav className="flex gap-6 border-2 border-white p-3 rounded-full font-semibold text-sm text-gray-700 cursor-pointer z-40">
-          {navMenu.map((item, index) => (
-            <h3 key={index} className="hover:text-blue-600">
-              {item}
-            </h3>
-          ))}
-        </nav>
-
-        <button className="text-white bg-blue-600 hover:bg-blue-500 py-2.5 px-4.5 rounded-full font-medium text-sm cursor-pointer z-50">
-          Contact Us
-        </button>
-      </header>
-
-      <span className="absolute inset-0 h-full w-full">
+      <span className="absolute inset-0 z-0 pointer-events-none">
         <Stair />
       </span>
 
       <div className="flex justify-between px-20 py-10">
         <div className="heroleft flex flex-col gap-3 p-5">
-          <span className="self-start text-black bg-white rounded-full p-2">
+          <span className="self-start text-black hover:text-white bg-white hover:bg-black rounded-full p-2">
             Welcome to cacheLogic
           </span>
 
           <StaggerHeading
             text={`Fast-Tracking
-Your IT Evolution.`}
+             Your IT Evolution.`}
           />
 
           <p className="mt-2 text-gray-500">
@@ -92,13 +68,15 @@ Your IT Evolution.`}
           </p>
 
           <div className="flex gap-4">
-            <button className="text-white bg-blue-600 hover:bg-blue-500 py-2.5 px-4.5 rounded-full text-sm">
-              Contact Us
-            </button>
+            <Button text="Contact Us" color="white" bg="bg-indigo-600" />
 
-            <button className="border-2 border-white py-2 px-4 rounded-full">
-              Discover our services
-            </button>
+            <Button
+              text="Discover your Services"
+              color="black"
+              bg="transparent"
+              border="border-2"
+              borderColor="white"
+            />
           </div>
 
           <div className="mt-6">

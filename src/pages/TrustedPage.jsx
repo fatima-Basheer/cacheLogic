@@ -2,6 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Button from "../components/Button";
 function TrustedPage() {
   const tickerRef = useRef();
 
@@ -23,7 +24,7 @@ function TrustedPage() {
     "Apple",
   ];
   return (
-    <div className="h-full bg-black relative overflow-hidden pt-20 pb-5">
+    <div className="bg-black relative overflow-hidden pt-20 pb-5">
       <div className="text text-center">
         <h1 className="text-white text-5xl">
           Trusted By Leading <br /> Companies
@@ -32,9 +33,9 @@ function TrustedPage() {
           CacheLogics transformed our outdated systems into a modern, efficient
           powerhouse.
         </p>
-        <button className="text-white py-2 px-4 border-1 border-white rounded-full mb-20">
-          Lets get Started
-        </button>
+        <Button  text="Lets get Started" color="white" bg="black"/>
+        
+    
       </div>
       <div className="logoball flex justify-center items-center">
         <div className="relative w-full overflow-hidden py-10 bg-black">

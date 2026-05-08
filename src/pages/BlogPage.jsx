@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Blog() {
+function BlogPage() {
   const ballRef = useRef();
 
   const data = [
@@ -101,7 +101,7 @@ function Blog() {
   }, []);
 
   return (
-    <div className="h-screen overflow-hidden px-20 grid grid-cols-[1fr_80px_1fr] gap-6 pb-5 blog-container">
+    <div className="h-screen overflow-hidden px-10 grid grid-cols-[1fr_80px_1fr] gap-6 pb-5 blog-container">
       <div className="p-10 min-w-0 h-full overflow-y-auto">
         {data.map((item, index) => (
           <div key={index} className="p-2">
@@ -166,4 +166,4 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default BlogPage;

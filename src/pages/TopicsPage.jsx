@@ -38,7 +38,7 @@ function TopicItem({ data }) {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={handleLeave}
-      className="flex items-center justify-between gap-6 px-3 py-5 border-b border-gray-300 relative"
+      className="flex items-center justify-between gap-6 px-5 py-5 border-b hover:border-1 hover:rounded-full border-gray-300 hover:border-gray-400 relative"
     >
       <img
         src={data.src}
@@ -74,7 +74,7 @@ function TopicItem({ data }) {
   );
 }
 
-export default function Topics() {
+export default function TopicsPage() {
   return (
     <div className="py-20 px-10 relative">
       <h1 className="text-3xl font-medium text-center">
