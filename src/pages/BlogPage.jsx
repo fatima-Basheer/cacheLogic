@@ -79,27 +79,53 @@ function BlogPage() {
     },
   ];
 
-  useGSAP(() => {
-    const container = document.querySelector(".center-col");
-    const ball = ballRef.current;
+useGSAP(() => {
+  const ball = ballRef.current;
+  const container = document.querySelector(".center-col");
 
-    if (!container || !ball) return;
+  if (!ball || !container) return;
 
-    const maxMove = container.offsetHeight - ball.offsetHeight;
+  const maxMove = container.offsetHeight - ball.offsetHeight;
 
-    gsap.to(ball, {
-      y: maxMove,
-      ease: "none",
-      duration: 50,
-      scrollTrigger: {
-        trigger: ".blog-container",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-    });
-  }, []);
+  let current = 0;
+  let target = 0;
+  let rafId;
 
+  const update = () => {
+    const rect = container.getBoundingClientRect();
+
+    
+    const progress = Math.min(
+      Math.max(
+        (window.innerHeight - rect.top) /
+          (window.innerHeight + rect.height),
+        0
+      ),
+      1
+    );
+
+    target = progress * maxMove;
+  };
+
+  const animate = () => {
+
+    current += (target - current) * 0.22;
+
+    gsap.set(ball, { y: current });
+
+    rafId = requestAnimationFrame(animate);
+  };
+
+  window.addEventListener("scroll", update, { passive: true });
+
+  update();
+  animate();
+
+  return () => {
+    window.removeEventListener("scroll", update);
+    cancelAnimationFrame(rafId);
+  };
+}, []);
   return (
     <div className="h-screen overflow-hidden px-10 grid grid-cols-[1fr_80px_1fr] gap-6 pb-5 blog-container">
       <div className="p-10 min-w-0 h-full overflow-y-auto">

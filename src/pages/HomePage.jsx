@@ -43,7 +43,9 @@ function HomePage() {
       ref={container}
       className="relative bg-sky-100 py-4 px-3 overflow-hidden"
     >
-      <div className="absolute bottom-[-40px] left-[-40px] w-[80%] h-[80px] bg-indigo-600 opacity-90 blur-3xl rounded-full"></div>
+<div className="absolute bottom-[-40px] left-50 w-[38vw] h-[120px] bg-indigo-500/50 blur-lg"></div>
+
+<div className="absolute bottom-[-60px] left-0 w-[40vw] h-[120px] bg-gradient-to-r from-indigo-600/60 to-transparent blur-xl"></div>
 
       <Header />
 
@@ -87,7 +89,6 @@ function HomePage() {
         <div className="heroright"></div>
       </div>
 
-      <div className="absolute top-[-10px] right-[-20px] w-[50%] h-[40px] bg-indigo-600 blur-2xl rounded-full"></div>
     </div>
   );
 }
