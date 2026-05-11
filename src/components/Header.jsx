@@ -10,7 +10,7 @@ function Header() {
     "Portfolio",
   ];
   return (
-    <header className="flex justify-between items-center px-15 py-3 relative z-20">
+    <header className="flex justify-between items-center px-12 py-3 relative z-20">
       <div>
         <p className="text-2xl leading-5 font-medium font-mono cursor-pointer">
           Cache <br /> Logic

@@ -5,18 +5,29 @@ import Button from "../components/Button";
 import Stair from "../components/Stair";
 import Images from "../components/Images";
 import Header from "../components/Header";
+
 const StaggerHeading = ({ text }) => {
+  const [line1, line2] = text.split("\n");
+
   return (
-    <h1 className="heading font-medium text-[80px] leading-20 tracking-normal">
-      {text.split("\n").map((line, i) => (
-        <div key={i}>
-          {line.split("").map((char, j) => (
+    <h1 className="heading font-medium leading-tight tracking-normal text-4xl sm:text-5xl md:text-6xl lg:text-[72px]">
+      <div className="max-w-[18ch] sm:max-w-[22ch] md:max-w-[26ch] lg:max-w-[30ch]">
+        <div className="block">
+          {line1.split("").map((char, j) => (
             <span key={j} className="char inline-block">
               {char === " " ? "\u00A0" : char}
             </span>
           ))}
         </div>
-      ))}
+
+        <div className="block">
+          {line2.split("").map((char, j) => (
+            <span key={j} className="char inline-block">
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </div>
+      </div>
     </h1>
   );
 };
@@ -41,11 +52,10 @@ function HomePage() {
   return (
     <div
       ref={container}
-      className="relative bg-sky-100 py-4 px-3 overflow-hidden"
+      className="relative bg-sky-100 py-4 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-<div className="absolute bottom-[-40px] left-50 w-[38vw] h-[120px] bg-indigo-500/50 blur-lg"></div>
-
-<div className="absolute bottom-[-60px] left-0 w-[40vw] h-[120px] bg-gradient-to-r from-indigo-600/60 to-transparent blur-xl"></div>
+      <div className="absolute bottom-[-40px] left-0 w-[70vw] h-[140px] bg-gradient-to-r from-indigo-600/70 to-transparent blur-2xl z-10 pointer-events-none" />
+      <div className="absolute bottom-[-40px] right-0 w-[50vw] h-[140px] bg-gradient-to-l from-indigo-600/70 to-transparent blur-2xl z-10 pointer-events-none" />
 
       <Header />
 
@@ -53,23 +63,23 @@ function HomePage() {
         <Stair />
       </span>
 
-      <div className="flex justify-between px-20 py-10">
-        <div className="heroleft flex flex-col gap-3 p-5">
-          <span className="self-start text-black hover:text-white bg-white hover:bg-black rounded-full p-2">
+      <div className="flex flex-col lg:flex-row justify-between items-start gap-8 px-4 sm:px-6 lg:px-12 py-10">
+        <div className="heroleft flex flex-col gap-4 w-full lg:w-1/2">
+          <span className="self-start text-black hover:text-white bg-white hover:bg-black rounded-full px-3 py-1 text-sm sm:text-base">
             Welcome to cacheLogic
           </span>
 
           <StaggerHeading
             text={`Fast-Tracking
-             Your IT Evolution.`}
+Your IT Evolution.`}
           />
 
-          <p className="mt-2 text-gray-500">
+          <p className="mt-2 text-gray-500 text-sm sm:text-base md:text-lg max-w-xl">
             Empowering Businesses With cutting-edge technology and tailored
             solutions
           </p>
 
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button text="Contact Us" color="white" bg="bg-indigo-600" />
 
             <Button
@@ -85,10 +95,7 @@ function HomePage() {
             <Images />
           </div>
         </div>
-
-        <div className="heroright"></div>
       </div>
-
     </div>
   );
 }
