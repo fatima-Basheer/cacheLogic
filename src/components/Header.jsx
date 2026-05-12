@@ -12,9 +12,7 @@ function Header() {
   return (
     <header className="flex justify-between items-center px-12 py-3 relative z-20">
       <div>
-        <p className="text-2xl leading-5 font-medium font-mono cursor-pointer">
-          Cache <br /> Logic
-        </p>
+        <img src="/Logo.svg" />
       </div>
 
       <nav className="flex gap-6 border-2 border-white p-3 rounded-full font-semibold text-sm text-gray-700 cursor-pointer z-40">

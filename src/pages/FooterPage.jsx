@@ -46,13 +46,11 @@ function FooterPage() {
   ];
 
   return (
-    <footer className="bg-blue-100 text-black py-10 px-6">
+    <footer className="bg-blue-100 text-black py-10 px-2">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <h1 className="text-2xl font-medium mb-3 leading-5">
-            Cache<br></br>Logic
-          </h1>
-          <p className="text-sm text-gray-500">
+          <img src="/Logo.svg" />
+          <p className="text-sm text-gray-500 mt-7">
             Fast-Tracking Your IT Evolution.
           </p>
           <p className="text-xs text-gray-500 leading-5 mt-4">
@@ -96,7 +94,7 @@ function FooterPage() {
         <span>www.cachelogic.tech</span>
         <span>New York, USA</span>
       </div>
-      <div className="absolute top-[-10px] right-[-20px] w-[90%] h-[100px] bg-indigo-400 blur-2xl rounded-full"></div>
+      {/* <div className="absolute top-[-10px] right-[-20px] w-[90%] h-[100px] bg-indigo-400 blur-2xl rounded-full"></div> */}
     </footer>
   );
 }

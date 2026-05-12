@@ -1,4 +1,4 @@
-import "./App.css"
+import "./index.css"
 import BlogPage from "./pages/BlogPage";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";

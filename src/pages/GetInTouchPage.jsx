@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { IoIosAdd } from "react-icons/io";
 
 function GetInTouchPage() {
-  const tickerRef = useRef();
+  const tickerRef = useRef(null);
 
   const companies = [
     "Trusted by 50+ Clients in 10+ Countries",
@@ -21,7 +21,7 @@ function GetInTouchPage() {
 
     gsap.to(el, {
       x: `-${totalWidth}px`,
-      duration: 15,
+      duration: 18,
       ease: "none",
       repeat: -1,
       modifiers: {
@@ -31,44 +31,38 @@ function GetInTouchPage() {
   }, []);
 
   return (
-    <section className="relative bg-black overflow-hidden min-h-screen pt-10 sm:pt-14 md:pt-16 pb-8 sm:pb-10 md:pb-12">
-
-
-      <div className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-white font-bold leading-[1.1] text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+    <section className="relative overflow-hidden bg-black min-h-screen flex flex-col justify-center py-8 sm:py-16 md:py-8 lg:py-16">
+      <div className="relative z-20 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+        <h1 className="text-white font-bold leading-tight text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl">
           Not Sure Where to Begin?
         </h1>
 
-        <p className="text-white/80 mt-5 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-5 sm:mt-6 text-white/80 max-w-3xl mx-auto leading-relaxed text-sm sm:text-sm md:text-base lg:text-lg px-2">
           Start with a Free Tech Audit and discover how CacheLogics can optimize
           your systems.
         </p>
 
-        <div className="flex justify-center mt-6">
-          <button className="group flex items-center gap-2 bg-blue-600 px-4 py-2 rounded-full transition-transform duration-300 hover:scale-105">
-            <div className="flex items-center overflow-hidden max-w-0 opacity-0 group-hover:max-w-[140px] group-hover:opacity-100 transition-all duration-500">
-              <IoIosAdd className="text-white text-xl" />
-              <span className="text-black bg-white text-xs rounded-full px-2 py-1 ml-2 whitespace-nowrap">
+        <div className="flex justify-center mt-6 sm:mt-8">
+          <button className="group flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition-all duration-300 px-5 sm:px-6 py-3 rounded-full hover:scale-105 shadow-lg">
+            <div className="flex items-center overflow-hidden max-w-0 opacity-0 group-hover:max-w-[160px] group-hover:opacity-100 transition-all duration-500">
+              <IoIosAdd className="text-white text-lg sm:text-xl" />
+
+              <span className="bg-white text-black text-[10px] sm:text-xs rounded-full px-2 py-1 ml-2 whitespace-nowrap">
                 You
               </span>
             </div>
 
-            <span className="text-white whitespace-nowrap">
+            <span className="text-white text-sm sm:text-base whitespace-nowrap font-medium">
               Get In Touch
             </span>
           </button>
         </div>
       </div>
 
-    
-      <div className="relative mt-10 sm:mt-12 md:mt-14 h-[140px] sm:h-[180px] md:h-[240px] w-full">
+      <div className="relative mt-14 sm:mt-16 md:mt-20 w-full h-[120px] sm:h-[160px] md:h-[220px] lg:h-[260px]">
+        <div className="absolute top-1/2 left-1/2 w-[120%] h-[35px] sm:h-[50px] md:h-[65px] lg:h-[80px] bg-white/5 backdrop-blur-xl border border-white/10 rotate-[7deg] -translate-x-1/2 -translate-y-1/2 rounded-md" />
 
-    
-        <div className="absolute top-1/2 left-1/2 w-full h-[60px] sm:h-[90px] md:h-[110px] bg-white/10 backdrop-blur-xl border border-white/10 rotate-[8deg] -translate-x-1/2 -translate-y-1/2" />
-
-    
-        <div className="absolute top-1/2 left-1/2 w-full rotate-[-8deg] -translate-x-1/2 -translate-y-1/2 bg-blue-600 py-4 sm:py-6 md:py-7 overflow-hidden shadow-2xl">
-
+        <div className="absolute top-1/2 left-1/2 w-[120%] rotate-[-7deg] -translate-x-1/2 -translate-y-1/2 bg-blue-600 py-3 sm:py-5 md:py-6 overflow-hidden shadow-2xl">
           <div
             ref={tickerRef}
             className="flex items-center whitespace-nowrap w-max"
@@ -76,20 +70,18 @@ function GetInTouchPage() {
             {[...companies, ...companies].map((name, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 sm:gap-4 px-5 sm:px-10 md:px-14"
+                className="flex items-center gap-3 sm:gap-5 md:gap-6 px-5 sm:px-8 md:px-12 lg:px-16"
               >
-                <span className="text-white uppercase tracking-wide font-semibold text-[10px] sm:text-sm md:text-base lg:text-lg">
+                <span className="text-white uppercase tracking-wide font-semibold text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg">
                   {name}
                 </span>
 
-                <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_12px_#fff]" />
+                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white shadow-[0_0_12px_#fff]" />
               </div>
             ))}
           </div>
-
         </div>
       </div>
-
     </section>
   );
 }

@@ -52,20 +52,23 @@ function HomePage() {
   return (
     <div
       ref={container}
-      className="relative bg-sky-100 py-4 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen bg-sky-100 overflow-hidden"
     >
-      <div className="absolute bottom-[-40px] left-0 w-[70vw] h-[140px] bg-gradient-to-r from-indigo-600/70 to-transparent blur-2xl z-10 pointer-events-none" />
-      <div className="absolute bottom-[-40px] right-0 w-[50vw] h-[140px] bg-gradient-to-l from-indigo-600/70 to-transparent blur-2xl z-10 pointer-events-none" />
+      <div className="absolute bottom-[-40px] left-0 w-[60vw] h-[80px] bg-gradient-to-r from-indigo-600 to-transparent blur-2xl" />
 
-      <Header />
+      <div className="absolute top-[-40px] right-0 w-[70vw] h-[100px] bg-gradient-to-l from-indigo-600 to-transparent blur-2xl" />
+
+      <div className="relative z-20 px-4 py-4 sm:px-6 lg:px-8">
+        <Header />
+      </div>
 
       <span className="absolute inset-0 z-0 pointer-events-none">
         <Stair />
       </span>
 
-      <div className="flex flex-col lg:flex-row justify-between items-start gap-8 px-4 sm:px-6 lg:px-12 py-10">
+      <div className="relative z-20 flex flex-col lg:flex-row justify-between items-start gap-8 px-6 sm:px-6 lg:px-14 py-10">
         <div className="heroleft flex flex-col gap-4 w-full lg:w-1/2">
-          <span className="self-start text-black hover:text-white bg-white hover:bg-black rounded-full px-3 py-1 text-sm sm:text-base">
+          <span className="self-start text-black hover:text-white bg-white hover:bg-black rounded-full px-3 py-1 text-sm sm:text-base transition-all duration-300">
             Welcome to cacheLogic
           </span>
 
