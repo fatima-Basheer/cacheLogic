@@ -2,12 +2,11 @@ import React, { useRef } from "react";
 import { IoLogoAndroid } from "react-icons/io";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 function BlogPage() {
   const ballRef = useRef();
+  const scrollRef = useRef();
+  const centerRef = useRef();
 
   const data = [
     {
@@ -32,150 +31,95 @@ function BlogPage() {
     },
   ];
 
-  const blogdata = [
-    {
-      no: "01",
-      title: "50+ Clients Across 10+ Countries",
-      heading1: "Global Expertise, Local Insight",
-      description1:
-        "With clients in over 10 countries, we understand regional needs, cultural nuances, and industry-specific challenges.",
-      heading2: "Trusted Around the World",
-      description2:
-        "Startups, SMEs, and enterprises worldwide rely on us to power their digital transformation.",
-      heading3: "Seamless Collaboration Across Borders",
-      description3:
-        "Distance isn't a barrier — our distributed teams ensure smooth communication and execution.",
-    },
-    {
-      no: "02",
-      title: "50+ Clients Across 10+ Countries",
-      heading1: "Global Expertise, Local Insight",
-      description1:
-        "We understand regional needs and industry-specific challenges.",
-      heading2: "Trusted Around the World",
-      description2: "We deliver consistent, high-quality results globally.",
-      heading3: "Seamless Collaboration Across Borders",
-      description3: "Distributed teams make collaboration effortless.",
-    },
-    {
-      no: "03",
-      title: "50+ Clients Across 10+ Countries",
-      heading1: "Global Expertise, Local Insight",
-      description1: "Tailored solutions for every market.",
-      heading2: "Trusted Around the World",
-      description2: "Reliable global delivery.",
-      heading3: "Seamless Collaboration Across Borders",
-      description3: "Smooth communication always.",
-    },
-    {
-      no: "04",
-      title: "50+ Clients Across 10+ Countries",
-      heading1: "Global Expertise, Local Insight",
-      description1: "Tailored solutions for every market.",
-      heading2: "Trusted Around the World",
-      description2: "Reliable global delivery.",
-      heading3: "Seamless Collaboration Across Borders",
-      description3: "Smooth communication always.",
-    },
-  ];
+  const blogdata = Array.from({ length: 15 }).map((_, i) => ({
+    no: String(i + 1).padStart(2, "0"),
+    title: "50+ Clients Across 10+ Countries",
+    heading1: "Global Expertise",
+    description1: "Regional + industry solutions",
+    heading2: "Trusted Worldwide",
+    description2: "Reliable delivery globally",
+    heading3: "Seamless Collaboration",
+    description3: "Smooth communication always",
+  }));
 
-useGSAP(() => {
-  const ball = ballRef.current;
-  const container = document.querySelector(".center-col");
+  useGSAP(() => {
+    const ball = ballRef.current;
+    const scroller = scrollRef.current;
+    const container = centerRef.current;
 
-  if (!ball || !container) return;
+    if (!ball || !scroller || !container) return;
 
-  const maxMove = container.offsetHeight - ball.offsetHeight;
+    let current = 0;
+    let target = 0;
+    let rafId;
 
-  let current = 0;
-  let target = 0;
-  let rafId;
+    const maxMove = container.offsetHeight - ball.offsetHeight;
 
-  const update = () => {
-    const rect = container.getBoundingClientRect();
+    const update = () => {
+      const scrollTop = scroller.scrollTop;
+      const maxScroll = scroller.scrollHeight - scroller.clientHeight;
 
-    
-    const progress = Math.min(
-      Math.max(
-        (window.innerHeight - rect.top) /
-          (window.innerHeight + rect.height),
-        0
-      ),
-      1
-    );
+      const progress = maxScroll ? scrollTop / maxScroll : 0;
 
-    target = progress * maxMove;
-  };
+      target = progress * maxMove;
+    };
 
-  const animate = () => {
+    const animate = () => {
+      current += (target - current) * 0.15;
+      gsap.set(ball, { y: current });
 
-    current += (target - current) * 0.22;
+      rafId = requestAnimationFrame(animate);
+    };
 
-    gsap.set(ball, { y: current });
+    scroller.addEventListener("scroll", update, { passive: true });
 
-    rafId = requestAnimationFrame(animate);
-  };
+    update();
+    animate();
 
-  window.addEventListener("scroll", update, { passive: true });
+    return () => {
+      scroller.removeEventListener("scroll", update);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
-  update();
-  animate();
-
-  return () => {
-    window.removeEventListener("scroll", update);
-    cancelAnimationFrame(rafId);
-  };
-}, []);
   return (
-    <div className="h-screen overflow-hidden px-10 grid grid-cols-[1fr_80px_1fr] gap-6 pb-5 blog-container">
-      <div className="p-10 min-w-0 h-full overflow-y-auto">
+    <div className="h-screen px-10 grid grid-cols-[1fr_80px_1fr] gap-6">
+      <div className="p-10 overflow-y-auto h-full">
         {data.map((item, index) => (
-          <div key={index} className="p-2">
+          <div key={index} className="mb-6">
             <div className="flex items-center gap-3">
-              <div className="p-2 border border-gray-300 rounded-xl w-fit">
-                <IoLogoAndroid className="text-3xl text-blue-500" />
-              </div>
-
-              <div className="flex gap-2 font-semibold items-center">
+              <IoLogoAndroid className="text-5xl text-blue-500 border-1 border-gray-400 p-1 rounded-xl" />
+              <div className="flex gap-2 font-semibold">
                 <span className="text-3xl font-bold">{item.num}</span>
                 <span>{item.title}</span>
               </div>
             </div>
-
-            <div className="text-gray-600 text-sm mt-2 break-words">
-              {item.description}
-            </div>
-
-            <hr className="my-3 border-gray-300" />
+            <p className="text-gray-600 text-sm mt-2">{item.description}</p>
+            <hr className="mt-3 text-gray-400" />
           </div>
         ))}
       </div>
 
-      <div className="center-col bg-gray-200 flex justify-center h-full relative overflow-hidden">
-        <div ref={ballRef} className="absolute top-0">
-          <h3 className="text-3xl font-extrabold italic text-blue-600 bg-gray-300 w-[70px] h-[70px] flex items-center justify-center rounded-full">
+      <div
+        ref={centerRef}
+        className="bg-gray-200 relative overflow-hidden h-full"
+      >
+        <div ref={ballRef} className="absolute top-0 left-1/2 -translate-x-1/2">
+          <div className="w-[70px] h-[70px] bg-blue-600 text-white flex items-center justify-center rounded-full font-bold text-xl">
             CL
-          </h3>
+          </div>
         </div>
       </div>
 
-      <div className="overflow-y-auto min-h-0 h-full space-y-10 p-4 w-full">
+      <div ref={scrollRef} className="h-screen overflow-y-auto p-4 space-y-10">
         {blogdata.map((data, index) => (
-          <div
-            key={index}
-            className="px-2 py-4 space-y-2 border-b border-gray-200"
-          >
+          <div key={index} className="border-b border-gray-200 pb-6 space-y-2">
             <div className="grid grid-cols-[30px_1fr] gap-4">
-              <h2 className="text-2xl text-blue-500 font-bold self-center">
-                {data.no}
-              </h2>
-
-              <h1 className="text-3xl font-semibold line-clamp-2">
-                {data.title}
-              </h1>
+              <h2 className="text-2xl text-blue-500 font-bold">{data.no}</h2>
+              <h1 className="text-3xl font-semibold">{data.title}</h1>
             </div>
 
-            <div className="pl-[50px] space-y-3">
+            <div className="pl-[50px] space-y-2">
               <h4 className="font-semibold text-sm">{data.heading1}</h4>
               <p className="text-xs text-gray-600">{data.description1}</p>
 
