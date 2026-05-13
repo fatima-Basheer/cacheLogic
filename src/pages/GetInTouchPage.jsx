@@ -31,7 +31,7 @@ function GetInTouchPage() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-black min-h-screen flex flex-col justify-center py-8 sm:py-16 md:py-8 lg:py-16">
+    <section className="overflow-hidden bg-black flex flex-col items-center py-4 sm:py-8 md:py-6 lg:py-10">
       <div className="relative z-20 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-white font-bold leading-tight text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl">
           Not Sure Where to Begin?
@@ -43,19 +43,19 @@ function GetInTouchPage() {
         </p>
 
         <div className="flex justify-center mt-6 sm:mt-8">
-          <button className="group flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition-all duration-300 px-5 sm:px-6 py-3 rounded-full hover:scale-105 shadow-lg">
-            <div className="flex items-center overflow-hidden max-w-0 opacity-0 group-hover:max-w-[160px] group-hover:opacity-100 transition-all duration-500">
-              <IoIosAdd className="text-white text-lg sm:text-xl" />
+    <button className="group flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition-all duration-300 px-5 sm:px-6 py-2 rounded-full hover:scale-105 shadow-lg">
+  <div className="flex items-center overflow-hidden max-w-0 opacity-0 group-hover:max-w-[140px] group-hover:opacity-100 transition-all duration-500">
+    <IoIosAdd className="text-white text-lg sm:text-xl" />
 
-              <span className="bg-white text-black text-[10px] sm:text-xs rounded-full px-2 py-1 ml-2 whitespace-nowrap">
-                You
-              </span>
-            </div>
+<span className="bg-white text-black text-[6px] sm:text-xs rounded-full px-1 py-1.5 ml-1 whitespace-nowrap font-medium leading-none">
+  You
+</span>
+  </div>
 
-            <span className="text-white text-sm sm:text-base whitespace-nowrap font-medium">
-              Get In Touch
-            </span>
-          </button>
+  <span className="text-white text-sm sm:text-[15px] whitespace-nowrap font-medium">
+    Get In Touch
+  </span>
+</button>
         </div>
       </div>
 

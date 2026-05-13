@@ -38,34 +38,41 @@ function TopicItem({ data }) {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={handleLeave}
-      className="flex items-center justify-between gap-6 px-5 py-5 border-b hover:border-1 hover:rounded-full border-gray-300 hover:border-gray-400 relative"
+      className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 py-4 sm:py-5 border-b border-gray-300 hover:border-gray-400 transition-all"
     >
-      <img
-        src={data.src}
-        alt={data.title}
-        className="w-14 h-14 object-cover rounded-full"
-      />
+      <div className="flex items-center gap-4 min-w-0">
+        <img
+          src={data.src}
+          alt={data.title}
+          className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 aspect-square object-cover rounded-full shrink-0"
+        />
 
-      <h1 className="text-lg font-semibold flex-1 cursor-pointer">
-        {data.title}
-      </h1>
+        <h1 className="text-sm sm:text-lg font-semibold cursor-pointer leading-snug truncate">
+          {data.title}
+        </h1>
+      </div>
 
-      <p className="text-gray-500 whitespace-nowrap">{data.date}</p>
+      <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap ml-auto sm:ml-0">
+        {data.date}
+      </p>
 
       {(hover || animateOut) && (
         <img
           src={data.src}
           alt={data.title}
           className={`
-            absolute right-20 top-1/2 -translate-y-1/2
-            w-[220px] h-[180px] rotate-12 object-cover rounded-xl
+            hidden sm:block
+            absolute right-10 top-1/2 -translate-y-1/2
+            w-[160px] sm:w-[200px] md:w-[220px]
+            h-[120px] sm:h-[150px] md:h-[180px]
+            object-cover rounded-xl
             transition-all duration-700 ease-in-out
             pointer-events-none
 
             ${
               animateOut
                 ? "translate-x-40 rotate-45 scale-0 opacity-0"
-                : "translate-x-0 rotate-0 scale-100 opacity-100"
+                : "translate-x-0 rotate-12 scale-100 opacity-100"
             }
           `}
         />
@@ -76,16 +83,16 @@ function TopicItem({ data }) {
 
 export default function TopicsPage() {
   return (
-    <div className="py-20 px-10 relative">
-      <h1 className="text-3xl font-medium text-center">
+    <div className="py-12 sm:py-16 md:py-20 px-4 sm:px-8 lg:px-10">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-medium text-center">
         Stay Ahead With CacheLogics Insights
       </h1>
 
-      <p className="mt-5 text-center">
+      <p className="mt-3 sm:mt-5 text-center text-sm sm:text-base text-gray-600">
         Practical guides, industry trends, and tips to help your business grow.
       </p>
 
-      <div className="mt-10 space-y-6">
+      <div className="mt-8 sm:mt-10 space-y-4 sm:space-y-6">
         {content.map((data, index) => (
           <TopicItem key={index} data={data} />
         ))}

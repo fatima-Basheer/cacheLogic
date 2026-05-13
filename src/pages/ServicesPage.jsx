@@ -29,7 +29,7 @@ function ServicesPage() {
   ];
 
   return (
-    <div className="bg-blue-100 relative py-16 px-20">
+    <div className="bg-blue-100 relative py-16 px-4 sm:px-10 lg:px-20 overflow-hidden">
       <h1 className="text-center text-4xl md:text-5xl font-medium mb-12">
         Our Popular Services
       </h1>
@@ -37,7 +37,7 @@ function ServicesPage() {
       <img
         src="/Vector.svg"
         alt="vector"
-        className="absolute bottom-0 right-0 top-40 pointer-events-none"
+        className="absolute bottom-0 right-0 top-40 pointer-events-none max-w-full"
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -47,13 +47,12 @@ function ServicesPage() {
             className={`
               group relative overflow-hidden cursor-pointer rounded-2xl
               transition-all duration-500 ease-in-out p-6
+
               h-[300px] hover:h-[400px]
 
               bg-white/10 backdrop-blur-lg
-
               border-2 border-white/20
               hover:border-blue-500
-
               hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]
 
               ${index % 3 === 1 ? "lg:translate-y-[20px]" : ""}
@@ -73,7 +72,6 @@ function ServicesPage() {
                 className="
                   inline-flex items-center justify-center p-2 rounded-2xl w-fit
                   bg-white/10 backdrop-blur-md border border-white/30
-
                   group-hover:scale-110 group-hover:shadow-lg group-hover:bg-blue-500
                   transition-all duration-300
                 "

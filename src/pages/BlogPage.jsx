@@ -60,7 +60,6 @@ function BlogPage() {
       const maxScroll = scroller.scrollHeight - scroller.clientHeight;
 
       const progress = maxScroll ? scrollTop / maxScroll : 0;
-
       target = progress * maxMove;
     };
 
@@ -83,43 +82,66 @@ function BlogPage() {
   }, []);
 
   return (
-    <div className="h-screen px-10 grid grid-cols-[1fr_80px_1fr] gap-6">
-      <div className="p-10 overflow-y-auto h-full">
+    <div
+      className="
+        h-auto lg:h-screen
+        flex flex-col lg:grid
+        lg:grid-cols-[1fr_80px_1fr]
+        gap-6
+        px-4 md:px-6 lg:px-10
+        lg:overflow-hidden
+      "
+    >
+      <div className="order-1 lg:order-none p-4 md:p-6 lg:p-10 h-auto lg:h-screen lg:overflow-y-auto">
         {data.map((item, index) => (
           <div key={index} className="mb-6">
             <div className="flex items-center gap-3">
-              <IoLogoAndroid className="text-5xl text-blue-500 border-1 border-gray-400 p-1 rounded-xl" />
-              <div className="flex gap-2 font-semibold">
-                <span className="text-3xl font-bold">{item.num}</span>
-                <span>{item.title}</span>
+              <IoLogoAndroid className="text-3xl md:text-4xl lg:text-5xl text-blue-500 border border-gray-300 p-1 rounded-xl" />
+
+              <div className="flex gap-2 font-semibold flex-wrap">
+                <span className="text-xl md:text-2xl lg:text-3xl font-bold">
+                  {item.num}
+                </span>
+                <span className="text-sm md:text-base">{item.title}</span>
               </div>
             </div>
-            <p className="text-gray-600 text-sm mt-2">{item.description}</p>
-            <hr className="mt-3 text-gray-400" />
+
+            <p className="text-gray-600 text-xs md:text-sm mt-2">
+              {item.description}
+            </p>
+
+            <hr className="mt-3 border-gray-300" />
           </div>
         ))}
       </div>
 
       <div
         ref={centerRef}
-        className="bg-gray-200 relative overflow-hidden h-full"
+        className="hidden lg:block bg-gray-200 relative overflow-hidden h-full"
       >
         <div ref={ballRef} className="absolute top-0 left-1/2 -translate-x-1/2">
-          <div className="w-[70px] h-[70px] bg-blue-600 text-white flex items-center justify-center rounded-full font-bold text-xl">
+          <div className="w-[70px] h-[70px] bg-blue-600 text-white flex items-center justify-center rounded-full font-bold text-4xl">
             CL
           </div>
         </div>
       </div>
 
-      <div ref={scrollRef} className="h-screen overflow-y-auto p-4 space-y-10">
+      <div
+        ref={scrollRef}
+        className="order-2 lg:order-none h-auto lg:h-screen lg:overflow-y-auto p-4 md:p-6 space-y-8 md:space-y-10"
+      >
         {blogdata.map((data, index) => (
           <div key={index} className="border-b border-gray-200 pb-6 space-y-2">
-            <div className="grid grid-cols-[30px_1fr] gap-4">
-              <h2 className="text-2xl text-blue-500 font-bold">{data.no}</h2>
-              <h1 className="text-3xl font-semibold">{data.title}</h1>
+            <div className="flex gap-3 items-start">
+              <h2 className="text-xl md:text-2xl text-blue-500 font-bold">
+                {data.no}
+              </h2>
+              <h1 className="text-lg md:text-2xl lg:text-3xl font-semibold">
+                {data.title}
+              </h1>
             </div>
 
-            <div className="pl-[50px] space-y-2">
+            <div className="pl-0 md:pl-10 space-y-2">
               <h4 className="font-semibold text-sm">{data.heading1}</h4>
               <p className="text-xs text-gray-600">{data.description1}</p>
 

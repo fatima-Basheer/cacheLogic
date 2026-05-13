@@ -33,9 +33,7 @@ function TrustedPage() {
           CacheLogics transformed our outdated systems into a modern, efficient
           powerhouse.
         </p>
-        <Button  text="Lets get Started" color="white" bg="black"/>
-        
-    
+        <Button text="Lets get Started" color="white" bg="black" />
       </div>
       <div className="logoball flex justify-center items-center">
         <div className="relative w-full overflow-hidden py-10 bg-black">
