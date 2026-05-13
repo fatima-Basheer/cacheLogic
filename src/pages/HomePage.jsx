@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -8,7 +8,8 @@ import Images from "../components/Images";
 import Header from "../components/Header";
 
 const StaggerHeading = ({ text }) => {
-  const lines = text.split("\n");
+
+  const lines = text.split("\n").map((line) => line.trim());
 
   return (
     <h1 className="font-medium leading-[1.2] tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
@@ -24,6 +25,7 @@ const StaggerHeading = ({ text }) => {
     </h1>
   );
 };
+
 function HomePage() {
   const container = useRef();
 
@@ -45,7 +47,7 @@ function HomePage() {
         delay: 0.3,
       });
     },
-    { scope: container },
+    { scope: container }
   );
 
   return (
@@ -73,12 +75,11 @@ function HomePage() {
 
           <StaggerHeading
             text={`Fast-Tracking
-            Your IT Evolution.`}
+Your IT Evolution.`}
           />
 
           <p className="mt-5 max-w-[260px] sm:max-w-md md:max-w-lg text-sm text-gray-600 leading-relaxed">
-            Empowering businesses with cutting-edge technology and tailored
-            digital solutions.
+            Empowering businesses with cutting-edge technology and tailored digital solutions.
           </p>
 
           <div className="mt-6 flex w-full flex-col sm:flex-row gap-3 sm:gap-4">
