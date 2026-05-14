@@ -17,9 +17,6 @@ body,
   transform-origin: bottom;
 }
 
-
-
-
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -31,4 +28,284 @@ body,
 
 .animate-scroll {
   animation: scroll 25s linear infinite;
+}
+
+.client-reviews {
+  overflow: hidden;
+  padding: 70px 40px;
+  width: 100%;
+}
+
+.reviews-heading {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: #111827;
+}
+
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  width: max-content;
+  gap: 30px;
+  animation: scroll 18s linear infinite;
+}
+
+.slider-track:hover {
+  animation-play-state: paused;
+}
+
+.slide-card {
+  position: relative;
+  width: 360px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.slide-image {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  display: block;
+  border-radius: 28px;
+}
+
+.hover-card {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  transform: translateY(120%);
+  transition: transform 0.45s ease;
+}
+
+.slide-card:hover .hover-card {
+  transform: translateY(0%);
+}
+
+.hover-card h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.hover-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e5e7eb;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.footer-left {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.footer-right {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.icon-wrapper {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.plus-icon,
+.x-icon {
+  position: absolute;
+  font-size: 26px;
+  color: rgb(59, 59, 246);
+  transition: all 0.35s ease;
+}
+
+.plus-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.x-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.slide-card:hover .plus-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+.slide-card:hover .x-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1024px) {
+  .client-reviews {
+    padding: 60px 28px;
+  }
+
+  .reviews-heading {
+    font-size: 34px;
+  }
+
+  .slide-card {
+    width: 320px;
+  }
+
+  .slide-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .client-reviews {
+    padding: 50px 20px;
+  }
+
+  .reviews-heading {
+    font-size: 30px;
+    margin-bottom: 45px;
+  }
+
+  .slider-track {
+    gap: 22px;
+  }
+
+  .slide-card {
+    width: 280px;
+  }
+
+  .slide-image {
+    height: 360px;
+    border-radius: 24px;
+  }
+
+  .hover-card {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .hover-card h2 {
+    font-size: 18px;
+  }
+
+  .hover-card p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .footer-left {
+    font-size: 15px;
+  }
+
+  .footer-right {
+    font-size: 24px;
+  }
+
+  .icon-wrapper {
+    width: 42px;
+    height: 42px;
+  }
+
+  .plus-icon,
+  .x-icon {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .client-reviews {
+    padding: 40px 14px;
+  }
+
+  .reviews-heading {
+    font-size: 15px;
+    margin-bottom: 35px;
+  }
+
+  .slider-track {
+    gap: 18px;
+  }
+
+  .slide-card {
+    width: 240px;
+  }
+
+  .slide-image {
+    height: 310px;
+    border-radius: 20px;
+  }
+
+  .hover-card {
+    padding: 14px;
+  }
+
+  .hover-card h2 {
+    font-size: 16px;
+  }
+
+  .hover-card p {
+    font-size: 12px;
+  }
+
+  .footer-left {
+    font-size: 13px;
+  }
+
+  .footer-right {
+    font-size: 20px;
+  }
+
+  .icon-wrapper {
+    width: 38px;
+    height: 38px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .plus-icon,
+  .x-icon {
+    font-size: 18px;
+  }
 }

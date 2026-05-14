@@ -44,6 +44,14 @@ function StepsPage() {
         blur-2xl z-0"
       />
 
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[260px]
+  bg-[radial-gradient(circle,rgba(255,255,255,0.35),rgba(255,255,255,0.15),transparent_75%)]
+  blur-2xl opacity-95 pointer-events-none z-0
+  [clip-path:polygon(50%_0%,0%_100%,100%_100%)]
+  shadow-[0_0_80px_rgba(255,255,255,0.25),0_0_120px_rgba(0,0,0,0.15)]"
+      />
+
       <div className="relative z-10 text-white text-center mb-12 sm:mb-16">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight px-2">
           Simple. Transparent. Effective

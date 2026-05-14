@@ -1,4 +1,4 @@
-import "./index.css"
+import "./index.css";
 import BlogPage from "./pages/BlogPage";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
@@ -8,6 +8,7 @@ import ResultPage from "./pages/ResultPage";
 import GetInTouchPage from "./pages/GetInTouchPage";
 import TopicsPage from "./pages/TopicsPage";
 import FooterPage from "./pages/FooterPage";
+import ClientReviewsPage from "./pages/ClientReviewsPage";
 function App() {
   return (
     <>
@@ -16,10 +17,10 @@ function App() {
       <ServicesPage />
       <BlogPage />
       <StepsPage />
-      <ResultPage/>
-
+      <ResultPage />
+      <ClientReviewsPage />
       <TopicsPage />
-      <GetInTouchPage/>
+      <GetInTouchPage />
       <FooterPage />
     </>
   );

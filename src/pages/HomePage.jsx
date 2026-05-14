@@ -1,14 +1,12 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
 import Button from "../components/Button";
 import Stair from "../components/Stair";
 import Images from "../components/Images";
 import Header from "../components/Header";
 
 const StaggerHeading = ({ text }) => {
-
   const lines = text.split("\n").map((line) => line.trim());
 
   return (
@@ -47,7 +45,7 @@ function HomePage() {
         delay: 0.3,
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
@@ -55,15 +53,14 @@ function HomePage() {
       ref={container}
       className="relative min-h-screen overflow-hidden bg-sky-100"
     >
-      <div className="absolute bottom-0 left-0 w-[80vw] sm:w-[60vw] h-[80px] bg-gradient-to-r from-indigo-600 to-transparent blur-3xl opacity-90" />
-
-      <div className="absolute top-0 right-0 w-[80vw] sm:w-[70vw] h-[100px] bg-gradient-to-l from-indigo-600 to-transparent blur-3xl opacity-60" />
+      <div className="absolute bottom-0 left-0 w-[80vw] sm:w-[50vw] h-[40px] bg-gradient-to-r from-indigo-600 via-indigo-700 to-transparent blur-xl opacity-80" />
+      <div className="absolute top-0 right-0 w-[70vw] sm:w-[60vw] h-[40px] bg-gradient-to-l from-indigo-600 via-indigo-700 to-transparent blur-xl opacity-80" />
 
       <div className="relative z-50">
         <Header />
       </div>
 
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none hidden lg:block">
         <Stair />
       </div>
 
@@ -79,10 +76,11 @@ Your IT Evolution.`}
           />
 
           <p className="mt-5 max-w-[260px] sm:max-w-md md:max-w-lg text-sm text-gray-600 leading-relaxed">
-            Empowering businesses with cutting-edge technology and tailored digital solutions.
+            Empowering businesses with cutting-edge technology and tailored
+            digital solutions.
           </p>
 
-          <div className="mt-6 flex w-full flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="mt-6 flex w-full flex-row flex-wrap gap-3">
             <Button
               text="Contact Us"
               color="white"
