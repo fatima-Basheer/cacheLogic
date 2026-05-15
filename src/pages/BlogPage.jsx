@@ -7,6 +7,7 @@ function BlogPage() {
   const ballRef = useRef();
   const scrollRef = useRef();
   const centerRef = useRef();
+  const leftRef = useRef();
 
   const data = [
     {
@@ -44,23 +45,25 @@ function BlogPage() {
 
   useGSAP(() => {
     const ball = ballRef.current;
-    const scroller = scrollRef.current;
+    const right = scrollRef.current;
     const container = centerRef.current;
+    const left = leftRef.current;
 
-    if (!ball || !scroller || !container) return;
+    if (!ball || !right || !container || !left) return;
 
     let current = 0;
     let target = 0;
     let rafId;
 
-    const update = () => {
+    const getProgress = () => {
+      const maxScroll = right.scrollHeight - right.clientHeight;
+      return maxScroll > 0 ? right.scrollTop / maxScroll : 0;
+    };
+
+    const updateBall = () => {
+      const progress = getProgress();
+
       const maxMove = container.offsetHeight - ball.offsetHeight;
-
-      const scrollTop = scroller.scrollTop;
-
-      const maxScroll = scroller.scrollHeight - scroller.clientHeight;
-
-      const progress = maxScroll > 0 ? scrollTop / maxScroll : 0;
 
       target = progress * maxMove;
     };
@@ -75,15 +78,24 @@ function BlogPage() {
       rafId = requestAnimationFrame(animate);
     };
 
-    scroller.addEventListener("scroll", update, {
-      passive: true,
-    });
+    const onRightScroll = () => {
+      updateBall();
+    };
 
-    update();
+    const onLeftWheel = (e) => {
+      e.preventDefault();
+      right.scrollTop += e.deltaY;
+    };
+
+    right.addEventListener("scroll", onRightScroll, { passive: true });
+    left.addEventListener("wheel", onLeftWheel, { passive: false });
+
+    updateBall();
     animate();
 
     return () => {
-      scroller.removeEventListener("scroll", update);
+      right.removeEventListener("scroll", onRightScroll);
+      left.removeEventListener("wheel", onLeftWheel);
       cancelAnimationFrame(rafId);
     };
   }, []);
@@ -91,40 +103,34 @@ function BlogPage() {
   return (
     <div
       className="
-        h-auto lg:h-screen
+        h-auto max-w-[1200px]
+        mx-auto
+        px-4 sm:px-5 md:px-6 lg:px-6 xl:px-8
         flex flex-col lg:grid
         lg:grid-cols-[1fr_auto_1fr]
-        gap-6
-        px-4 md:px-8 lg:px-12
-        lg:overflow-hidden
       "
     >
       <div
+        ref={leftRef}
         className="
           order-1 lg:order-none
-          p-4 md:p-6 lg:p-10
-          h-auto lg:h-screen
-          lg:overflow-y-auto
+          py-6 px-4 sm:px-5 md:px-6 lg:px-10
+          w-full
         "
       >
         {data.map((item, index) => (
           <div key={index} className="mb-6">
             <div className="flex items-center gap-3">
-              <IoLogoAndroid
-                className="
-                  text-3xl md:text-4xl lg:text-5xl
-                  text-blue-500
-                  border border-gray-300
-                  p-1 rounded-xl
-                "
-              />
+              <IoLogoAndroid className="text-3xl md:text-4xl lg:text-5xl text-blue-500 border border-gray-300 p-1 rounded-xl" />
 
-              <div className="flex gap-2 font-semibold flex-wrap">
+              <div className="flex gap-2 font-semibold flex-wrap mb-6">
                 <span className="text-xl md:text-2xl lg:text-3xl font-bold">
                   {item.num}
                 </span>
 
-                <span className="text-sm md:text-base">{item.title}</span>
+                <span className="text-sm md:text-base text-black/65 mt-2">
+                  {item.title}
+                </span>
               </div>
             </div>
 
@@ -135,6 +141,17 @@ function BlogPage() {
             <hr className="mt-3 border-gray-300" />
           </div>
         ))}
+
+        <h6 className="text-xl md:text-2xl lg:text-3xl font-semibold text-black/95">
+          Why CacheLogic?
+        </h6>
+
+        <p className="text-xs text-gray-700 py-5 leading-5.5">
+          At CacheLogic, we don’t just deliver technology—we craft solutions
+          that evolve with your business. Our focus is on creating value-driven,
+          scalable, and future-ready systems that empower organizations to stay
+          ahead in an ever-changing digital landscape.
+        </p>
       </div>
 
       <div
@@ -148,25 +165,12 @@ function BlogPage() {
           w-fit
         "
       >
-        <div
-          className="
-            relative
-            z-10
-            flex
-            justify-center
-            items-start
-          "
-        >
+        <div className="relative z-10 flex justify-center items-start">
           <img
             ref={ballRef}
             src="/Ball.svg"
             alt="Ball"
-            className="
-              w-16
-              h-16
-              object-contain
-              block
-            "
+            className="w-16 h-16 object-contain block"
           />
         </div>
       </div>
@@ -175,53 +179,32 @@ function BlogPage() {
         ref={scrollRef}
         className="
           order-2 lg:order-none
-          h-auto lg:h-screen
-          lg:overflow-y-auto
           p-4 md:p-6
           space-y-8 md:space-y-10
+          lg:h-screen
+          lg:overflow-y-auto
         "
       >
         {blogdata.map((data, index) => (
-          <div
-            key={index}
-            className="
-              border-b border-gray-200
-              pb-6
-              space-y-2
-            "
-          >
+          <div key={index} className="border-b border-gray-200 pb-6 space-y-2">
             <div className="flex gap-3 items-start">
-              <h2
-                className="
-                  text-xl md:text-2xl
-                  text-blue-500
-                  font-bold
-                "
-              >
+              <h2 className="text-xl md:text-2xl text-blue-600 font-bold">
                 {data.no}
               </h2>
 
-              <h1
-                className="
-                  text-lg md:text-2xl lg:text-3xl
-                  font-semibold
-                "
-              >
+              <h1 className="text-lg md:text-2xl lg:text-3xl font-semibold">
                 {data.title}
               </h1>
             </div>
 
             <div className="pl-0 md:pl-10 space-y-2">
               <h4 className="font-semibold text-sm">{data.heading1}</h4>
-
               <p className="text-xs text-gray-600">{data.description1}</p>
 
               <h4 className="font-semibold text-sm">{data.heading2}</h4>
-
               <p className="text-xs text-gray-600">{data.description2}</p>
 
               <h4 className="font-semibold text-sm">{data.heading3}</h4>
-
               <p className="text-xs text-gray-600">{data.description3}</p>
             </div>
           </div>

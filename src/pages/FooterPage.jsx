@@ -1,50 +1,49 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+const footerData = [
+  {
+    title: "Quick Links",
+    links: [
+      "Home",
+      "Services",
+      "Why CacheLogic",
+      "Case Studies",
+      "Blog/Insights",
+      "About Us",
+      "Contact Us",
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      "Custom Solutions",
+      "Web & Mobile Apps",
+      "AI / Machine Learning",
+      "Automation",
+      "Cybersecurity",
+      "Cloud Solutions",
+    ],
+  },
+  {
+    title: "Products",
+    links: [
+      "Cheesyhire",
+      "Wheelution",
+      "SideCue",
+      "Scheduling App",
+      "The AI SEO",
+    ],
+  },
+];
+
+const socialLinks = [
+  { icon: <FaFacebookF />, url: "#" },
+  { icon: <FaInstagram />, url: "#" },
+  { icon: <FaTwitter />, url: "#" },
+  { icon: <FaYoutube />, url: "#" },
+];
 
 function FooterPage() {
-  const footerData = [
-    {
-      title: "Quick Links",
-      links: [
-        "Home",
-        "Services",
-        "Why CacheLogic",
-        "Case Studies",
-        "Blog/Insights",
-        "About Us",
-        "Contact Us",
-      ],
-    },
-    {
-      title: "Services",
-      links: [
-        "Custom Solutions",
-        "Web & Mobile Apps",
-        "AI / Machine Learning",
-        "Automation",
-        "Cybersecurity",
-        "Cloud Solutions",
-      ],
-    },
-    {
-      title: "Products",
-      links: [
-        "Cheesyhire",
-        "Wheelution",
-        "SideCue",
-        "Scheduling App",
-        "The AI SEO",
-      ],
-    },
-  ];
-
-  const socialLinks = [
-    { icon: <FaFacebookF />, url: "#" },
-    { icon: <FaInstagram />, url: "#" },
-    { icon: <FaTwitter />, url: "#" },
-    { icon: <FaYoutube />, url: "#" },
-  ];
-
   return (
     <footer className="bg-blue-100 text-black py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">

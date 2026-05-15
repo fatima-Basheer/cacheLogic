@@ -31,14 +31,23 @@ function TopicItem({ data }) {
     setTimeout(() => {
       setAnimateOut(false);
       setHover(false);
-    }, 700);
+    }, 500);
   };
 
   return (
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={handleLeave}
-      className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 py-4 sm:py-5 border-b border-gray-300 hover:border-gray-400 transition-all"
+      className="
+        relative flex flex-col sm:flex-row sm:items-center sm:justify-between
+        gap-4 sm:gap-6 px-4 sm:px-6 py-4 sm:py-5
+
+        border border-transparent border-b-gray-300
+
+        sm:hover:border-gray-300 sm:hover:rounded-full
+
+        transition-all duration-300 ease-out
+      "
     >
       <div className="flex items-center gap-4 min-w-0">
         <img
@@ -61,20 +70,27 @@ function TopicItem({ data }) {
           src={data.src}
           alt={data.title}
           className={`
-            hidden sm:block
-            absolute right-10 top-1/2 -translate-y-1/2
-            w-[160px] sm:w-[200px] md:w-[220px]
-            h-[120px] sm:h-[150px] md:h-[180px]
-            object-cover rounded-xl
-            transition-all duration-700 ease-in-out
-            pointer-events-none
+  hidden sm:block
+  absolute right-10 top-1/2 -translate-y-1/2
 
-            ${
-              animateOut
-                ? "translate-x-40 rotate-45 scale-0 opacity-0"
-                : "translate-x-0 rotate-12 scale-100 opacity-100"
-            }
-          `}
+  w-[160px] sm:w-[200px] md:w-[220px]
+  h-[120px] sm:h-[150px] md:h-[180px]
+
+  object-cover rounded-xl
+  pointer-events-none
+
+  will-change-transform
+
+  transition-all duration-700 ease-in-out
+
+  ${
+    animateOut
+      ? "translate-x-40 rotate-45 scale-0 opacity-0"
+      : hover
+        ? "translate-x-[-10%] rotate-12 scale-100 opacity-100"
+        : "opacity-0 translate-x-[-10%] scale-100"
+  }
+`}
         />
       )}
     </div>
@@ -83,7 +99,7 @@ function TopicItem({ data }) {
 
 export default function TopicsPage() {
   return (
-    <div className="py-12 sm:py-16 md:py-20 px-4 sm:px-8 lg:px-10">
+    <div className="py-12 sm:py-16 md:py-20 px-4 sm:px-8 lg:px-10 h-auto lg:py-18 max-w-[1400px] mx-auto">
       <h1 className="text-xl sm:text-2xl md:text-3xl font-medium text-center">
         Stay Ahead With CacheLogics Insights
       </h1>

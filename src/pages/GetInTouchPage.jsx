@@ -33,9 +33,9 @@ function GetInTouchPage() {
   return (
     <section className="overflow-hidden bg-black flex flex-col items-center py-4 sm:py-8 md:py-6 lg:py-10">
       <div className="relative z-20 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-white font-bold leading-tight text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl">
+        <p className="text-white font-bold leading-tight text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl">
           Not Sure Where to Begin?
-        </h1>
+        </p>
 
         <p className="mt-5 sm:mt-6 text-white/80 max-w-3xl mx-auto leading-relaxed text-sm sm:text-sm md:text-base lg:text-lg px-2">
           Start with a Free Tech Audit and discover how CacheLogics can optimize
