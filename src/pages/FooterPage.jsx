@@ -45,8 +45,8 @@ const socialLinks = [
 
 function FooterPage() {
   return (
-    <footer className="bg-blue-100 text-black py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <footer className="bg-blue-100 text-black py-10 px-4 sm:px-6 lg:px-14">
+      <div className=" mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         <div>
           <img src="/Logo.svg" className="w-28 sm:w-32" />
 
@@ -64,7 +64,7 @@ function FooterPage() {
               <a
                 key={i}
                 href={item.url}
-                className="text-lg sm:text-xl hover:text-blue-500 transition bg-gray-100 p-2 rounded-xl"
+                className="text-gray-400 text-2xl sm:text-xl hover:text-blue-500 transition bg-gray-100 p-2 rounded-xl"
               >
                 {item.icon}
               </a>
