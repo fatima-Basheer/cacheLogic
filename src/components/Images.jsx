@@ -87,7 +87,7 @@ function Images() {
         </div>
       </div>
 
-      {/* TITLE + DESCRIPTION */}
+      
       <div className="flex ml-2 mt-3 items-start gap-3">
         <div className="w-40 h-18 border-l border-b border-black" />
 

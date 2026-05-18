@@ -28,11 +28,16 @@ const servicesData = [
 ];
 function ServicesPage() {
   return (
-    <div className="bg-sky-50 overflow-hidden py-15 md:py-18 lg:py-22">
+    <div className="relative bg-indigo-50 overflow-hidden py-15 md:py-18 lg:py-22">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 ">
         <h1 className="text-center text-4xl md:text-5xl font-medium mb-12">
           Our Popular Services
         </h1>
+        <img
+          src="/Vector.svg"
+          alt="vector"
+          className="absolute bottom-0 right-0 opacity-90  pointer-events-none"
+        />
 
         <div className="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14">
           {servicesData.map((item) => (
@@ -91,7 +96,7 @@ function ServicesPage() {
           ))}
         </div>
 
-        <div className="flex justify-start mt-12">
+        <div className="flex justify-start my-20">
           <Button variant="primary" className="px-6 py-2">
             Get in touch
           </Button>
