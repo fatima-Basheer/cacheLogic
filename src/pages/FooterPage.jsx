@@ -74,16 +74,16 @@ function FooterPage() {
 
         {footerData.map((section, i) => (
           <div key={i}>
-            <h2 className="text-base sm:text-lg font-semibold mb-3">
+            <h2 className="text-base sm:text-lg font-semibold mb-6">
               {section.title}
             </h2>
 
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-5 text-xs text-gray-600">
               {section.links.map((link, idx) => (
                 <li key={idx}>
                   <a
                     href="#"
-                    className="hover:text-black transition text-xs sm:text-sm"
+                    className="hover:text-black transition text-xs sm:text-sm md:text-xs lg:text:xs"
                   >
                     {link}
                   </a>
@@ -94,8 +94,8 @@ function FooterPage() {
         ))}
       </div>
 
-      <div className="mt-10 bg-white rounded-2xl px-4 sm:px-6 py-5">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 text-center sm:text-left text-gray-600 text-sm sm:text-base">
+      <div className="mt-10 bg-white rounded-2xl px-4 sm:px-6 py-3">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 text-center sm:text-left text-gray-600 text-sm sm:text-base md:text-md lg:text-lg">
           <span>Contact</span>
           <span>info@cachelogic.tech</span>
           <span>www.cachelogic.tech</span>
